@@ -103,7 +103,7 @@ public class WidgetConfigActivity extends AppCompatActivity implements AdapterVi
             if((db = Utils.getDb(WidgetConfigActivity.this)) != null) {
 
                 cursor = db.query(Constants.NOTES_TABLE, new String[]{Constants.ID_COL, Constants.NOTE_TITLE_COL},
-                        null, null, null, null, Constants.NOTE_TITLE_COL + " ASC");
+                        Constants.DELETED_COL + " = ?", new String[]{"0"}, null, null, Constants.NOTE_TITLE_COL + " ASC");
                 return true;
             } else
                 return false;
